@@ -2,28 +2,55 @@ import { useState, useEffect } from 'react'
 import { animate, motion } from 'framer-motion'
 import './App.css'
 import logojc from './assets/jclogo.png'
+
 import fundo from './assets/fundo.jpg'
 import fundo1 from './assets/fundo1.jpg'
 import fundo2 from './assets/fundo2.jpg'
+import fundo3 from './assets/fundo3.jpg'
+
 import barbeiro from './assets/navas.png'
 import logo from './assets/logo.png'
+import barba from './assets/barba.jpg'
+import corte from './assets/corte.jpg'
+import premium from './assets/premiumplan.jpg'
 
 import imagem1 from './assets/imagem1.jpg'
 import imagem2 from './assets/imagem2.jpg'
 import imagem3 from './assets/imagem3.jpg'
+import logomin from './assets/logomin.svg'
+
 
 export default function App() {
   // const [count, setCount] = useState(0)
   const [current, setCurrent] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
+  const [videoOpen, setVideoOpen] = useState(false)
+  
 
   const imagens = [
     imagem1,
     imagem2,
     imagem3
   ]
+
+  useEffect(() => {
+
+  if (videoOpen) {
+
+    document.body.style.overflow = 'hidden'
+
+  } else {
+
+    document.body.style.overflow = ''
+
+  }
+
+  return () => {
+    document.body.style.overflow = ''
+  }
+
+}, [videoOpen])
 
   useEffect(() => {
 
@@ -80,15 +107,27 @@ export default function App() {
         </div>
 
         <div className="logo">
-          <img src={logojc} style={{width: 50, height: 50}}/>
+          <img
+            src={logojc}
+            style={{
+              width: 70,
+              height: 70,
+
+              filter: `
+                drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7))
+                drop-shadow(0px 0px 25px rgba(212,175,55,0.18))
+              `
+            }}
+          />
         </div>
 
         <div className="links">
 
           <a href="#inicio" class='navLink'>Início</a>
-          <a href="#" class='navLink'>Sobre</a>
           <a href="#galeria" class='navLink' >Galeria</a>
-          <a href="#" class='navLink'>Contato</a>
+          <a href="#sobre" class='navLink'>Sobre</a>
+          <a href="#planos" class='navLink'>Assinaturas</a>
+          <a href="#contato" class='navLink'>Contato</a>
           <a href="#" onClick={() => window.open('https://agendaservico.com/jcstreetbarber', '_blak')} class='navLink'>Agendar horario</a>
 
         </div>
@@ -223,7 +262,7 @@ export default function App() {
         </div>
       </section>
 
-      <section class="hero">
+      <section id="sobre" class="hero">
         <div class="background">
           <img src={fundo2} style={{width: '100%', height: '100vh', objectFit: 'cover'}}/>
         </div>
@@ -261,7 +300,7 @@ export default function App() {
 
           <div class="sobrenosDiv">
 
-            <motion.p initial={{scale: 0.7, opacity: 0, y: 100}} whileInView={{scale: 1, opacity: 1, y: 0}} transition={{ duration: 1.2, ease: 'easeOut'}} viewport={{amount: 0.5}}className="text-4xl md:text-7xl">
+            <motion.p initial={{scale: 0.7, opacity: 0, y: 100}} whileInView={{scale: 1, opacity: 1, y: 0}} transition={{ duration: 1.2, ease: 'easeOut'}} viewport={{amount: 0.5}} className="text-4xl md:text-7xl">
               A JC Street Barber nasceu para oferecer
               uma experiência premium, unindo tradição,
               modernidade e atendimento de qualidade em
@@ -288,6 +327,397 @@ export default function App() {
           </div>
 
         </div>
+
+      </section>
+
+      <section className="miniSection">
+
+        <motion.div className="leftMini">
+
+          <img
+            class="hoverImg"
+            src={logomin}
+            alt=""
+          />
+
+        </motion.div>
+
+        <div className="rightMini">
+
+          <h1>
+            STREET EXPERIENCE
+          </h1>
+
+          <p>
+            Mais que uma barbearia.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section id="planos" class="hero">
+
+        <div class="background">
+          <img src={fundo3} class='bgImage' />
+        </div>
+
+        <div class='content Promo'>
+          <h1>NOSSOS PLANOS</h1>
+          <div class='frameCard'>
+
+            <motion.div
+              className="cardPromo"
+
+              initial={{
+                opacity: 0,
+                y: 80,
+                scale: 0.9
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1
+              }}
+
+              whileHover={{
+                y: -15,
+                scale: 1.03,
+                rotateX: 5,
+                rotateY: -5
+              }}
+
+              transition={{
+                duration: 0.8,
+                ease: 'easeOut'
+              }}
+
+              viewport={{ once: true, amount: 0.4 }}
+            >
+
+              <div className="imageWrapper">
+
+                <img
+                  src={corte}
+                  alt="Plano StreetLine"
+                  className="cardImage"
+                />
+
+                <div className="imageOverlay"></div>
+
+                <span className="badge">
+                  MAIS POPULAR
+                </span>
+
+              </div>
+
+              <div className="cardContent">
+
+                <p className="planType">
+                  MEMBERSHIP
+                </p>
+
+                <h2>
+                  StreetLine
+                </h2>
+
+                <p className="description">
+                  Corte Ilimitado
+                </p>
+
+                <div className="priceArea">
+
+                  <h3>
+                    R$ 54,90
+                  </h3>
+
+                  <span>/mês</span>
+
+                </div>
+
+                <button
+                  className="btnAssinar"
+                  onClick={() =>
+                    window.open(
+                      'https://agendaservico.com/jcstreetbarber',
+                      '_blank'
+                    )
+                  }
+                >
+                  ASSINAR AGORA
+                </button>
+
+              </div>
+
+            </motion.div>
+
+            
+            <motion.div
+              className="cardPromo"
+
+              initial={{
+                opacity: 0,
+                y: 80,
+                scale: 0.9
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1
+              }}
+
+              whileHover={{
+                y: -15,
+                scale: 1.03,
+                rotateX: 5,
+                rotateY: -5
+              }}
+
+              transition={{
+                duration: 0.8,
+                ease: 'easeOut'
+              }}
+
+              viewport={{ once: true, amount: 0.4 }}
+            >
+
+              <div className="imageWrapper">
+
+                <img
+                  src={barba}
+                  alt="Plano Street Beard"
+                  className="cardImage"
+                />
+
+                <div className="imageOverlay"></div>
+
+                {/* <span className="badge">
+                  MAIS POPULAR
+                </span> */}
+
+              </div>
+
+              <div className="cardContent">
+
+                <p className="planType">
+                  MEMBERSHIP
+                </p>
+
+                <h2>
+                  Street Beard
+                </h2>
+
+                <p className="description">
+                  Barba Ilimitada
+                </p>
+
+                <div className="priceArea">
+
+                  <h3>
+                    R$ 64,90
+                  </h3>
+
+                  <span>/mês</span>
+
+                </div>
+
+                <button
+                  className="btnAssinar"
+                  onClick={() =>
+                    window.open(
+                      'https://agendaservico.com/jcstreetbarber',
+                      '_blank'
+                    )
+                  }
+                >
+                  ASSINAR AGORA
+                </button>
+
+              </div>
+
+            </motion.div>
+
+                <motion.div
+                  className="cardPromo"
+    
+                  initial={{
+                    opacity: 0,
+                    y: 80,
+                    scale: 0.9
+                  }}
+    
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1
+                  }}
+    
+                  whileHover={{
+                    y: -15,
+                    scale: 1.03,
+                    rotateX: 5,
+                    rotateY: -5
+                  }}
+    
+                  transition={{
+                    duration: 0.8,
+                    ease: 'easeOut'
+                  }}
+    
+                  viewport={{ once: true, amount: 0.4 }}
+                >
+    
+                  <div className="imageWrapper">
+    
+                    <img
+                      src={premium}
+                      alt="Plano Street Elite"
+                      className="cardImage"
+                    />
+    
+                    <div className="imageOverlay"></div>
+    
+                    {/* <span className="badge">
+                      MAIS POPULAR
+                    </span> */}
+    
+                  </div>
+    
+                  <div className="cardContent">
+    
+                    <p className="planType">
+                      MEMBERSHIP
+                    </p>
+    
+                    <h2>
+                      Street Elite
+                    </h2>
+    
+                    <p className="description">
+                      Corte e Barba Ilimitado
+                    </p>
+    
+                    <div className="priceArea">
+    
+                      <h3>
+                        R$ 99,90
+                      </h3>
+    
+                      <span>/mês</span>
+    
+                    </div>
+    
+                    <button
+                      className="btnAssinar"
+                      onClick={() =>
+                        window.open(
+                          'https://agendaservico.com/jcstreetbarber',
+                          '_blank'
+                        )
+                      }
+                    >
+                      ASSINAR AGORA
+                    </button>
+    
+                  </div>
+    
+                </motion.div>
+
+            
+          </div>
+              {
+                videoOpen && (
+
+                  <motion.div
+                    className="videoModal"
+
+                    initial={{
+                      opacity: 0
+                    }}
+
+                    animate={{
+                      opacity: 1
+                    }}
+
+                    exit={{
+                      opacity: 0
+                    }}
+                  >
+
+                    <div
+                      className="videoOverlay"
+                      onClick={() => setVideoOpen(false)}
+                    />
+
+                    <motion.div
+                      className="videoContainer"
+
+                      initial={{
+                        scale: 0.8,
+                        opacity: 0,
+                        y: 50
+                      }}
+
+                      animate={{
+                        scale: 1,
+                        opacity: 1,
+                        y: 0
+                      }}
+
+                      transition={{
+                        duration: 0.4
+                      }}
+                    >
+
+                      <button
+                        className="closeVideo"
+                        onClick={() => setVideoOpen(false)}
+                      >
+                        ✕
+                      </button>
+
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/dSs4iCrRbMM?autoplay=1"
+
+                        title="YouTube video player"
+
+                        frameBorder="0"
+
+                        allow="
+                          accelerometer;
+                          autoplay;
+                          clipboard-write;
+                          encrypted-media;
+                          gyroscope;
+                          picture-in-picture
+                        "
+
+                        allowFullScreen
+                      />
+
+                    </motion.div>
+
+                  </motion.div>
+
+                )
+              }
+
+          <div>
+            <button
+              className="btnVideo"
+              onClick={() => setVideoOpen(true)}
+            >
+              Saiba Mais
+            </button>
+          </div>
+
+        </div>
+
+        {/* <div class="overlay"></div> */}
 
       </section>
 

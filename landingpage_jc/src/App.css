@@ -15,8 +15,18 @@ body {
 
 .hero {
   position: relative;
-  height: 100vh;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  height: auto;
+
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* FOTO */
@@ -219,7 +229,8 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(197, 197, 197, 0.95);
+  background: rgba(255, 255, 255, 0.95);
+  max-height: 60px;
 
   backdrop-filter: blur(10px);
 
@@ -269,7 +280,7 @@ body {
   overflow: hidden;
 
   display: flex;
-  align-items: center;
+  align-items: end;
 
   mask-image: linear-gradient(
     to right,
@@ -290,10 +301,12 @@ body {
 
 .marqueeContent {
   display: flex;
-
+  position: relative;
   width: fit-content;
 
   animation: marquee 20s linear infinite;
+
+
 }
 
 .marqueeContent span {
@@ -446,3 +459,558 @@ body {
 
 }
 
+.frameCard {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 24px;
+
+  perspective: 1200px;
+
+  z-index: 2;
+}
+
+.content.Promo {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  padding: 60px 20px;
+
+  z-index: 3;
+}
+
+.cardPromo {
+  width: 100%;
+  max-width: 290px;
+
+  min-height: 390px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18,18,18,0.95),
+      rgba(10,10,10,0.98)
+    );
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border 0.4s ease;
+
+  cursor: pointer;
+}
+
+.cardPromo:hover {
+  transform:
+    translateY(-8px)
+    scale(1.01);
+
+  border: 1px solid rgba(212,175,55,0.18);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.45),
+    0 0 35px rgba(212,175,55,0.08);
+}
+
+.cardPromo::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.04),
+      transparent 40%
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.imageWrapper {
+  position: relative;
+
+  width: 100%;
+  height: 150px;
+
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.cardPromo:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.1)
+    );
+}
+
+.badge {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(212,175,55,0.12);
+
+  border: 1px solid rgba(212,175,55,0.22);
+
+  color: #d4af37;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  z-index: 2;
+
+  backdrop-filter: blur(10px);
+}
+
+.cardContent {
+  padding: 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  z-index: 2;
+}
+
+.planType {
+  color: rgba(255,255,255,0.45);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.cardContent h2 {
+  color: white;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.description {
+  color: rgba(255,255,255,0.65);
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+.priceArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  gap: 4px;
+
+  margin-top: 4px;
+}
+
+.priceArea h3 {
+  color: #d4af37;
+
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.priceArea span {
+  color: rgba(255,255,255,0.45);
+
+  font-size: 13px;
+
+  margin-bottom: 4px;
+}
+
+.btnAssinar {
+  margin-top: 12px;
+
+  width: 100%;
+  height: 48px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d4af37,
+      #f1d57a
+    );
+
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow:
+    0 8px 20px rgba(212,175,55,0.18);
+}
+
+.btnAssinar:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 24px rgba(212,175,55,0.28);
+}
+
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width: 1024px) {
+
+  .content.Promo {
+    padding: 50px 20px;
+  }
+
+  .frameCard {
+    gap: 20px;
+  }
+
+  .cardPromo {
+    max-width: 240px;
+  }
+
+  .cardContent h2 {
+    font-size: 24px;
+  }
+
+  .priceArea h3 {
+    font-size: 26px;
+  }
+
+}
+
+
+/* ========================= */
+/* CELULAR */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  .content.Promo {
+    padding: 40px 16px;
+  }
+
+  .frameCard {
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .cardPromo {
+    max-width: 100%;
+
+    width: 100%;
+  }
+
+  .imageWrapper {
+    height: 140px;
+  }
+
+  .cardContent {
+    padding: 20px;
+  }
+
+  .cardContent h2 {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .priceArea h3 {
+    font-size: 28px;
+  }
+
+  .btnAssinar {
+    height: 46px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  #contato {
+    padding: 120px 0;
+
+    min-height: auto;
+  }
+
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.videoModal {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.videoOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0,0,0,0.75);
+
+  backdrop-filter: blur(10px);
+}
+
+.videoContainer {
+  position: relative;
+
+  width: 90%;
+  max-width: 1000px;
+
+  aspect-ratio: 16/9;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  background: #000;
+
+  box-shadow:
+    0 20px 80px rgba(0,0,0,0.55),
+    0 0 40px rgba(212,175,55,0.12);
+
+  z-index: 2;
+}
+
+.closeVideo {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.6);
+
+  color: white;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  z-index: 3;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s;
+}
+
+.closeVideo:hover {
+  transform: scale(1.08);
+
+  background: rgba(212,175,55,0.2);
+}
+
+.btnVideo {
+  width: 220px;
+  height: 54px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.04);
+
+  color: white;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  backdrop-filter: blur(10px);
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.btnVideo:hover {
+  transform: translateY(-3px);
+
+  border: 1px solid rgba(212,175,55,0.25);
+
+  box-shadow:
+    0 10px 30px rgba(212,175,55,0.12);
+}
+
+.miniSection {
+  width: 100%;
+
+  height: 350px;
+
+  display: flex;
+
+  overflow: hidden;
+}
+
+
+/* ========================= */
+/* LEFT */
+/* ========================= */
+
+.leftMini {
+  flex: 1;
+
+  height: 100%;
+}
+
+.leftMini img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* ========================= */
+/* RIGHT */
+/* ========================= */
+
+.rightMini {
+  flex: 1;
+
+  height: 100%;
+
+  background: #0f0f0f;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px;
+
+  color: white;
+}
+
+.rightMini h1 {
+  font-size: clamp(36px, 5vw, 72px);
+
+  margin: 0;
+}
+
+.rightMini p {
+  color: rgba(255,255,255,0.7);
+
+  font-size: 18px;
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  .miniSection {
+    display: none;
+  }
+
+}
+.hoverImg:hover {
+  transform: scale(1.05);
+
+  transition: transform 0.6s ease;
+}
