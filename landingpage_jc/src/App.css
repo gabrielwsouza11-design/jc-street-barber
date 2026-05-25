@@ -271,56 +271,62 @@ body {
 }
 
 .marquee {
-
   position: absolute;
+
   bottom: 0;
+  left: 0;
 
   width: 100%;
 
   overflow: hidden;
 
-  display: flex;
-  align-items: end;
+  padding: 25px 0;
 
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  z-index: 20;
 
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  background: rgba(0,0,0,0.35);
+
+  backdrop-filter: blur(8px);
+
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.marqueeContent {
+.marqueeTrack {
   display: flex;
-  position: relative;
+
   width: fit-content;
 
-  animation: marquee 20s linear infinite;
+  gap: 80px;
 
-
-}
-
-.marqueeContent span {
-  font-size: 24px;
-
-  font-weight: bold;
-
-  color: #ffffff5e;
+  animation: marqueeMove 18s linear infinite;
 
   white-space: nowrap;
+}
 
-  padding-right: 50px;
+.marqueeTrack span {
+  font-size: 1.2rem;
 
-  font-family: 'Cinzel';
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  color: rgba(255,255,255,0.75);
+
+  text-transform: uppercase;
+
+  flex-shrink: 0;
+}
+
+@keyframes marqueeMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
 }
 
 .watermark {
@@ -1009,8 +1015,160 @@ body {
   }
 
 }
+
 .hoverImg:hover {
   transform: scale(1.05);
 
   transition: transform 0.6s ease;
+}
+
+.contentNavas {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+  position: relative;
+}
+
+.sticky-image {
+  position: sticky;
+  top: 100px;
+
+  height: fit-content;
+}
+
+.sticky-image img {
+  width: 300px;
+}
+
+.sobreSection {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 200vh;
+}
+
+.navasFloat {
+  width: 420px;
+
+  position: absolute;
+
+  right: 12px;
+  top: 200px;
+
+  transform: translateX(40%);
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0px 10px 30px rgba(0,0,0,0.5));
+
+  will-change: transform;
+}
+
+.miniVideoSection {
+  position: relative;
+
+  height: 60vh;
+  width: 100%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgVideo {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0,0,0,0.45);
+
+  z-index: 2;
+}
+
+.videoContent {
+  position: relative;
+
+  z-index: 3;
+
+  text-align: center;
+  color: white;
+}
+
+.videoContent h1 {
+  font-size: 4rem;
+  letter-spacing: 4px;
+}
+
+.videoContent p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.videoContent button {
+  margin-top: 25px;
+
+  padding: 14px 28px;
+
+  border: none;
+
+  background: #d4af37;
+  color: black;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.content.loc {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 200px
+}
+
+.mapContent {
+  text-align: center;
+
+  color: white;
+}
+
+.mapContent h1 {
+  font-size: 3rem;
+
+  letter-spacing: 4px;
+}
+
+.mapContent p {
+  opacity: 0.7;
+
+  margin-top: 10px;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 500px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0px 20px 40px rgba(0,0,0,0.4);
 }

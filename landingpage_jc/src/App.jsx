@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { animate, motion } from 'framer-motion'
+import { motion, useScroll, useTransform, animate } from 'framer-motion'
 import './App.css'
 import logojc from './assets/jclogo.png'
 
@@ -7,6 +7,8 @@ import fundo from './assets/fundo.jpg'
 import fundo1 from './assets/fundo1.jpg'
 import fundo2 from './assets/fundo2.jpg'
 import fundo3 from './assets/fundo3.jpg'
+import fundo4 from './assets/fundo4.jpg'
+import video from './assets/video.mp4'
 
 import barbeiro from './assets/navas.png'
 import logo from './assets/logo.png'
@@ -17,7 +19,9 @@ import premium from './assets/premiumplan.jpg'
 import imagem1 from './assets/imagem1.jpg'
 import imagem2 from './assets/imagem2.jpg'
 import imagem3 from './assets/imagem3.jpg'
+import wpp from './assets/wpp.png'
 import logomin from './assets/logomin.svg'
+import navas from './assets/navas.png'
 
 
 export default function App() {
@@ -26,6 +30,14 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [videoOpen, setVideoOpen] = useState(false)
+
+  const { scrollY } = useScroll()
+
+  const y = useTransform(
+    scrollY,
+    [1500, 2500],
+    [0, -300]
+  )
   
 
   const imagens = [
@@ -267,7 +279,18 @@ export default function App() {
           <img src={fundo2} style={{width: '100%', height: '100vh', objectFit: 'cover'}}/>
         </div>
 
+        <motion.img
+                src={navas}
+                className="navasFloat"
+
+                style={{
+                  y
+                }}
+              />
+
         <div class="content extra">
+
+              
 
           <motion.h1
             className="watermark"
@@ -309,24 +332,32 @@ export default function App() {
             </motion.p>
 
 
-            <div className="marquee">
+            
+          </div>
+        </div>
+           <div className="marquee">
 
-              <div className="marqueeContent">
+            <div className="marqueeTrack">
 
-                <span>
-                  JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE • JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE • 
-                </span>
+              <span>
+                JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE •
+              </span>
 
-                <span>
-                  JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE • JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE • 
-                </span>
+              <span>
+                JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE •
+              </span>
 
-              </div>
+              <span>
+                JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE •
+              </span>
+
+              <span>
+                JC STREET BARBER • ESTILO • PRESENÇA • PERSONALIDADE •
+              </span>
 
             </div>
-          </div>
 
-        </div>
+          </div>
 
       </section>
 
@@ -719,6 +750,78 @@ export default function App() {
 
         {/* <div class="overlay"></div> */}
 
+      </section>
+
+      <section className="miniVideoSection">
+
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="bgVideo"
+        >
+          <source src={video} type="video/mp4" />
+        </video>
+
+        <div className="videoOverlay"></div>
+
+        <div className="videoContent">
+
+          <h1>STREET EXPERIENCE</h1>
+
+          <p>
+            Mais que uma barbearia.
+          </p>
+
+          <button className='but' onClick={() => window.open('https://agendaservico.com/jcstreetbarber', '_blank')}>
+            AGENDAR HORÁRIO
+          </button>
+
+        </div>
+
+      </section>
+
+      <section class='hero' id='contato'>
+        <div class='background'> 
+              <img src={fundo4} style={{width: '100%', height: '100vh', objectFit: 'cover'}}/>
+        </div>
+
+        <div class='content loc'>
+          <div>
+              <h1>CONTATO</h1>
+              <div>
+
+              <img src={wpp} style={{width: 35, height: 35}}/>
+              <p>(31) 90000-0000</p>
+              </div>
+
+          </div> 
+
+
+          <div className="mapContainer">
+          <div className="mapContent">
+
+            <h3>ONDE ESTAMOS</h3>
+
+            <p>
+              Rua dos Metalurgicos, nº 900, Gabiroba
+            </p>
+
+          </div>
+            <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.4897392656612!2d-43.209227924178975!3d-19.64910092962418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa5a0fb051c2e63%3A0x78a5a77dedcb0f74!2sR.%20dos%20Metal%C3%BArgicos%2C%20900%20-%20Gabiroba%2C%20Itabira%20-%20MG%2C%2035902-011!5e0!3m2!1spt-BR!2sbr!4v1779745826994!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+
+          </div>
+
+        </div>
       </section>
 
 
