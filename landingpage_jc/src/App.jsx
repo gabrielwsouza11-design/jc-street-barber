@@ -111,9 +111,10 @@ export default function App() {
         <div className={`mobileMenu ${menuOpen ? 'active' : ''}`}>
 
           <a href="#inicio">Início</a>
-          <a href="#">Sobre</a>
+          <a href="#sobre">Sobre</a>
           <a href="#galeria">Galeria</a>
-          <a href="#">Contato</a>
+          <a href="#planos">Planos</a>
+          <a href="#contato">Contato</a>
           <a href="#">Agendar horario</a>
 
         </div>
@@ -782,7 +783,7 @@ export default function App() {
 
       </section>
 
-      <section class='hero' id='contato'>
+      <section class='hero cont' id='contato'>
         <div class='background'> 
               <img src={fundo4} style={{width: '100%', height: '100vh', objectFit: 'cover'}}/>
         </div>
